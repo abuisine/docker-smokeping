@@ -1,0 +1,26 @@
+*** Probes ***
+
++ FPing
+binary = /usr/bin/fping
+
++ EchoPingHttp
+binary = /usr/bin/echoping
+
++ EchoPingHttps
+binary = /usr/bin/echoping
+
++ AnotherDNS
+forks = 5
+offset = 50%
+step = 300
+# The following variables can be overridden in each target section
+ipversion = 4
+lookup = www.example.org
+mininterval = 0.5
+pings = 5
+port = 53
+protocol = udp
+recordtype = A
+require_answers = 0
+require_noerror = 0
+timeout = 5
