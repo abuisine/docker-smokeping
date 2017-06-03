@@ -195,10 +195,11 @@ menu = DNS
 title = DNS checks
 " >> $target_file
 
+DOCKER_DNS_IP=127.0.0.11
 target_count=0
 for target in $TARGETS_DNS
 do
-    echo -e "++ target${target_count}\nprobe = AnotherDNS\nmenu = ${target}\ntitle = ${target}\nhost = localhost\nlookup = ${target}\n" >> $target_file
+    echo -e "++ target${target_count}\nprobe = AnotherDNS\nmenu = ${target}\ntitle = ${target}\nhost = ${DOCKER_DNS_IP}\nlookup = ${target}\n" >> $target_file
     target_count=$((target_count + 1))
 done
 

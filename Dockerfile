@@ -1,7 +1,7 @@
 FROM debian:stretch
 
 LABEL maintainer="Alexandre Buisine <alexandrejabuisine@gmail.com>"
-LABEL version="1.0.0"
+LABEL version="1.1.0"
 
 # Install lighttpd and smokeping
 RUN export DEBIAN_FRONTEND='noninteractive' \
