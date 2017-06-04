@@ -9,7 +9,7 @@ The container will automatically generate menu and checks based on the `LOOKUPS`
 Here are some examples:
 * `<dns hostname or ip>:<domain name to check>`
 * `<dns hostname or ip>:<domain name to check 1> <dns hostname or ip>:<domain name to check 2>`
-* `<dns hostname or ip 1>:<domain name to check> <dns hostname or ip 1>:<same domain name to check>`
+* `<dns hostname or ip 1>:<domain name to check> <dns hostname or ip 2>:<same domain name to check>`
 * `<dns hostname or ip 1>:<domain name to check 1> <dns hostname or ip 2>:<domain name to check 2>`
 
 You can also fine tune the AnotherDNS probe through environment variables:
