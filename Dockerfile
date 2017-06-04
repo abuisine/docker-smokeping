@@ -1,7 +1,7 @@
 FROM debian:stretch
 
 LABEL maintainer="Alexandre Buisine <alexandrejabuisine@gmail.com>"
-LABEL version="1.1.0"
+LABEL version="2.0.0"
 
 # Install lighttpd and smokeping
 RUN export DEBIAN_FRONTEND='noninteractive' \
@@ -66,14 +66,28 @@ RUN export DEBIAN_FRONTEND='noninteractive' \
 COPY resources/Probes /etc/smokeping/config.d/
 COPY resources/Targets /etc/smokeping/config.d/
 COPY resources/docker-entrypoint.sh /usr/local/bin/
+ADD https://github.com/kreuzwerker/envplate/releases/download/v0.0.8/ep-linux /usr/local/bin/ep
 
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/*
 
-VOLUME ["/etc/smokeping", "/etc/ssmtp", "/var/lib/smokeping", \
-			"/var/cache/smokeping"]
+VOLUME ["/etc/smokeping", "/etc/ssmtp", "/var/lib/smokeping", "/var/cache/smokeping", "/var/run/smokeping"]
 
 EXPOSE 80
 
-ENV TARGETS_DNS="www.google.com www.yahoo.fr"
+ENV LOOKUPS="127.0.0.11:www.google.com 127.0.0.11:www.yahoo.fr" \
+ FORKS="5" \
+ STEP="100" \
+ OFFSET="50%" \
+ IP_VERSION="4" \
+ MIN_INTERVAL="0.5" \
+ PINGS="5" \
+ PORT="53" \
+ PROTOCOL="udp" \
+ RECORD_TYPE="A" \
+ REQUIRE_ANSWERS="0" \
+ REQUIRE_NOERROR="0" \
+ TIMEOUT="5"
+
+# container volumes should be destroyed when changing STEP
 
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]

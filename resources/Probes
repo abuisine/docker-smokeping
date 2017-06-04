@@ -10,17 +10,17 @@ binary = /usr/bin/echoping
 binary = /usr/bin/echoping
 
 + AnotherDNS
-forks = 5
-offset = 50%
-step = 300
+forks = ${FORKS}
+offset = ${OFFSET}
+step = ${STEP}
 # The following variables can be overridden in each target section
-ipversion = 4
+ipversion = ${IP_VERSION}
 lookup = www.example.org
-mininterval = 0.5
-pings = 5
-port = 53
-protocol = udp
-recordtype = A
-require_answers = 0
-require_noerror = 0
-timeout = 5
+mininterval = ${MIN_INTERVAL}
+pings = ${PINGS}
+port = ${PORT}
+protocol = ${PROTOCOL}
+recordtype = ${RECORD_TYPE}
+require_answers = ${REQUIRE_ANSWERS}
+require_noerror = ${REQUIRE_NOERROR}
+timeout = ${TIMEOUT}
